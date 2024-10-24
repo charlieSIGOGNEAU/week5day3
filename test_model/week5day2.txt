@@ -1,0 +1,67 @@
+rappel:	 PRAGMA table_info(artists);		.tables
+
+2.1
+CREATE TABLE "user" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "name" TEXT);
+CREATE TABLE "article" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "user_id" INTEGER);
+CREATE TABLE "category" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "title" TEXT);
+CREATE TABLE "article-category" ("article_id" INTEGER, "category_id" INTEGER );
+CREATE TABLE "tag" ("id" INTEGER PRIMARY KEY AUTOINCREMENT, "category_id" INTEGER, "color" TEXT);
+
+INSERT INTO user (name) VALUES ("charlie");
+INSERT INTO article (user_id) VALUES (1);
+INSERT INTO category (title) VALUES ("il creer un jeu");
+INSERT INTO tag (category_id, color) VALUES (1, "red");
+
+2.2.1
+CREATE TABLE "cours" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "title" TEXT, "description" TEXT);
+CREATE TABLE "leçon" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "cours_id" INTEGER, "titre" TXTE, "body" TEXT);
+
+2.2.2
+CREATE TABLE "pin" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "url" TXTE,"utilisateur_id);
+CREATE TABLE "utilisateur" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT );
+CREATE TABLE "commenter" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "pin_id" INTEGER, "utilisateur_id" INTEGER);
+
+2.2.3
+CREATE TABLE "utilisateur" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT );
+CREATE TABLE "lien" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT , "utilisateur" TEXT);
+CREATE TABLE "commentaire" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT , "lien_id" TEXT)
+CREATE TABLE "commentaire_de_commentaire" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "commentaire_id" TEXT )
+
+2.2.4
+CREATE TABLE "cours" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT )
+CREATE TABLE "eleve" ( "id" INTEGER PRIMARY KEY AUTOINCREMENT, "cours_id" TEXT)
+
+2.3
+Récupérer tous les albums:
+SELECT Title FROM albums;
+
+
+
+Récupérer tous les albums dont le titre contient "Great" (indice)
+SELECT * FROM albums WHERE Title LIKE '%Great%';
+
+Donner le nombre total d'albums contenus dans la base (sans regarder les id bien sûr)
+SELECT COUNT(*) FROM albums;
+
+Supprimer tous les albums dont le nom contient "music"
+DELETE FROM albums WHERE Title LIKE '%music%'
+
+Récupérer tous les albums écrits par AC/DC
+SELECT albums.* FROM albums JOIN artists ON albums.ArtistId = artists.ArtistId WHERE artists.Name = "AC/DC";
+
+Récupérer tous les titres des albums de AC/DC
+SELECT Title FROM albums JOIN artists ON albums.ArtistId = artists.ArtistId WHERE artists.Name = "AC/DC";
+
+Récupérer la liste des titres de l'album "Let There Be Rock"
+SELECT name FROM tracks JOIN albums ON tracks.AlbumId = albums.AlbumId WHERE albums.Title = "Let There Be Rock";
+
+Afficher le prix de cet album ainsi que sa durée totale
+SELECT UnitPrice, Milliseconds FROM tracks JOIN albums ON tracks.AlbumId = albums.AlbumId WHERE albums.Title = "Let There Be Rock";
+
+Afficher le coût de l'intégralité de la discographie de "Deep Purple"
+Créer l'album de ton artiste favori en base, en renseignant correctement les trois tables albums, artists et tracks
+
+
+
+
+
